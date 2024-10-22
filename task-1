@@ -1,0 +1,13 @@
+import pandas as pd
+import numpy as np
+data={'Category':['crawl','run','walk','run','crawl']}
+df=pd.DataFrame(data)
+order=['crawl','walk','run']
+df['Category'] = pd.Categorical(df['Category'], categories=order, ordered=True)
+df['Category_encoded'] = df['Category'].cat.codes
+print(df)
+data2={'Category2':['apple','kiwi','grape','kiwi','apple','grape']}
+df2=pd.DataFrame(data2)
+                    
+one_hot_encoded_df = pd.get_dummies(df2, columns=['Category2'], prefix='Fruits',dtype=int)
+print(one_hot_encoded_df)
